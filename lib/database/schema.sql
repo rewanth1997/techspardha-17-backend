@@ -5,7 +5,7 @@ use techspardha2017;
 create table categories (
   id integer PRIMARY KEY auto_increment,
   name varchar(100) NOT NULL
-);
+) engine = innodb;
 
 create table societies (
   id integer PRIMARY KEY auto_increment,
@@ -27,7 +27,7 @@ create table studentDetails(
   college varchar(50) NOT NULL,
   gender varchar(10) NOT NULL,
   token varchar(255) NOT NULL
-)engine = innodb;
+) engine = innodb;
 
 create table interests (
   id integer PRIMARY KEY auto_increment,
@@ -40,13 +40,13 @@ create table teamUsers (
   teamId integer REFERENCES teams.id,
   studentId integer REFERENCES student.id,
   eventId integer REFERENCES events.id
-)
+) engine = innodb;
 
 create table teamInvites (
   teamId integer REFERENCES teams.id,
   studentId integer REFERENCES student.id,
   status varchar(100)
-)
+) engine = innodb;
 
 create table events(
   id integer PRIMARY KEY auto_increment,
@@ -63,7 +63,7 @@ create table events(
   maxContestants integer,
   status varchar(100) NOT NULL,
   pdf varchar(100)
-) engine=innodb;
+) engine = innodb;
 
 create table guestLec (
   id integer PRIMARY KEY auto_increment,
@@ -77,7 +77,7 @@ create table guestLec (
 create table wishList(
   lecId integer REFERENCES guestLec.id,
   studentId integer REFERENCES student.id
-)
+) engine = innodb;
 
 create table coordinatorUsers(
   id integer PRIMARY KEY auto_increment,
