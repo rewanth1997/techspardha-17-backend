@@ -1,4 +1,5 @@
 var express = require('express');
+var app = express();
 var router = express.Router();
 
 /**
@@ -10,4 +11,9 @@ var router = express.Router();
  *
  *
  */
+
+var events = require('./../lib/api/Events/Events');
+
+router.use('/api/events',events);
+
 module.exports = router;
