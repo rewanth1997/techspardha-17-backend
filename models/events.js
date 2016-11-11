@@ -42,7 +42,7 @@ module.exports = function(sequelize, DataTypes) {
     society: {
       type: DataTypes.STRING,
       notNull: true
-    }
+    },
     category: {
       type: DataTypes.STRING,
       notNull: true

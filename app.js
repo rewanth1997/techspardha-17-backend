@@ -10,7 +10,6 @@ var ejs = require('ejs');
 var path = require('path');
 
 var index = require('./routes/index');
-//var index = require('./lib/api/Events/Events');
 
 var app = express();
 
@@ -19,7 +18,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({secret: 'secret code'}));
+app.use(session({secret: 'secret code',resave: true, saveUninitialized: true}));
 app.use('/', index);
 
 module.exports = app;
