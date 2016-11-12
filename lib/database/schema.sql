@@ -19,7 +19,7 @@ create table student(
 ) engine = innodb;
 
 create table studentDetails(
-  id integer PRIMARY KEY,
+  id integer REFERENCES student.id,
   rollNo integer(10) NOT NULL,
   phoneNo varchar(15) NOT NULL,
   branch varchar(30) NOT NULL,
@@ -31,8 +31,8 @@ create table studentDetails(
 
 create table interests (
   id integer PRIMARY KEY auto_increment,
-  studentId integer REFERENCES techspardha2017.student.id,
-  categoryId integer REFERENCES techspardha2017.category.id
+  studentId integer REFERENCES student.id,
+  categoryId integer REFERENCES category.id
 ) engine = innodb;
 
 create table teamUsers (
@@ -40,6 +40,11 @@ create table teamUsers (
   teamId integer REFERENCES teams.id,
   studentId integer REFERENCES student.id,
   eventId integer REFERENCES events.id
+)
+create table teams (
+  id integer PRIMARY KEY auto_increment,
+  eventId integer REFERENCES events.id,
+  curLevel integer NOT NULL
 ) engine = innodb;
 
 create table teamInvites (
@@ -64,6 +69,13 @@ create table events(
   status varchar(100) NOT NULL,
   pdf varchar(100)
 ) engine = innodb;
+
+create table teamUsers (
+  status boolean NOT NULL,
+  teamId integer REFERENCES teams.id,
+  studentId integer REFERENCES student.id,
+  eventId integer REFERENCES events.id
+) engine=innodb;
 
 create table guestLec (
   id integer PRIMARY KEY auto_increment,
@@ -90,10 +102,4 @@ create table coordinatorUsers(
 create table coordinatorPanel(
   coordinatorId integer REFERENCES coordinatorUsers (Id),
   eventName varchar(100) REFERENCES eventsList (eventName)
-) engine = innodb;
-
-create table teams (
-  id integer PRIMARY KEY auto_increment,
-  eventId integer REFERENCES events.id,
-  curLevel integer NOT NULL
 ) engine = innodb;
