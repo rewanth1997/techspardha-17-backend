@@ -4,10 +4,12 @@ var router = express.Router();
 
 var adminRouter = require('../lib/api/Admin/Admin');
 var eventsRouter = require('../lib/api/Events/Events');
+var eventRouter = require('../lib/api/Events/Event');
 var userRouter = require('../lib/api/User/User');
 
 router.use('/admin', adminRouter);
 router.use('/events', eventsRouter);
+router.use('/event',eventRouter);
 router.use('/user', userRouter);
 /**
  * Intentionally left stuff here.
