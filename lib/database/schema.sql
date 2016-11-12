@@ -86,7 +86,7 @@ create table guestLec (
 create table wishList(
   lecId integer REFERENCES guestLec.id,
   studentId integer REFERENCES student.id
-) engine=innodb;
+) engine = innodb;
 
 create table coordinatorUsers (
   id integer PRIMARY KEY auto_increment,
