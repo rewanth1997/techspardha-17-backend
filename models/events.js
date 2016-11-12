@@ -1,7 +1,7 @@
 "use strict";
 
 module.exports = function(sequelize, DataTypes) {
-  var events = sequelize.define("events", {        //Must be same as table name
+  var Events = sequelize.define("Events", {        //Must be same as table name
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -62,5 +62,5 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     timestamps: false
   });
-  return events;
+  return Events;
 };
