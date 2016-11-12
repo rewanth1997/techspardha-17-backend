@@ -15,6 +15,7 @@
     "knex": "*",
     "morgan": "~1.6.1",
     "mysql": "*",
+    "request": "^2.78.0",
     "sequelize": "^3.25.0",
     "sequelize-cli": "^2.4.0",
     "serve-favicon": "~2.3.0"
