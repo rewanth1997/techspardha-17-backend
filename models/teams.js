@@ -12,18 +12,13 @@ module.exports = function(sequelize, Datatypes) {
 				model: 'events',
 				key: 'id'	
 			}*/
-		},
-		CurrentLevel: {
-			type: Datatypes.INTEGER,
-			notNull: true
 		}
 	}, {
 		classMethods: {
 			associate: function(models) {
-				console.log(models);
-				Teams.belongsTo(models.Events, {foreignKey: 'EventId'});
-				Teams.hasMany(models.TeamInvites, {foreignKey: 'id'});
-				Teams.hasMany(models.TeamUsers, {foreignKey: 'id'});
+				Teams.belongsTo(models.Events, {as: 'Event'});
+				Teams.hasMany(models.TeamInvites);
+				Teams.hasMany(models.TeamUsers);
 			}
 		}
 	});
