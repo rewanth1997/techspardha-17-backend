@@ -1,78 +1,72 @@
 (function () {
    'use strict';
    module.exports = function(sequelize, DataTypes) {
-     var Events = sequelize.define("Events", {        //Must be same as table name
+     var Events = sequelize.define("Events", {
        Id: {
          type: DataTypes.INTEGER,
          primaryKey: true,
-         autoIncrement: true // Automatically gets converted to SERIAL for postgres
+         autoIncrement: true
        },
        Name: {
          type: DataTypes.STRING,
-         notNull: true
+         allowNull: false
        },
        Description: {
          type: DataTypes.STRING,
-         notNull: true
+         allowNull: false
        },
        Venue: {
          type: DataTypes.STRING,
-         notNull: true
+         allowNull: true
        },
        StartTime: {
          type: DataTypes.STRING,
-         notNull: true
+         allowNull: true
        },
        EndTime: {
          type: DataTypes.STRING,
-         notNull: true
+         allowNull: true
        },
        StartDate: {
          type: DataTypes.STRING,
-         notNull: true
+         allowNull: true
        },
        EndDate: {
          type: DataTypes.STRING,
-         notNull: true
+         allowNull: true
        },
        CurrentRound: {
          type: DataTypes.STRING,
-         notNull: true
+         allowNull: true
        },
        Society: {
          type: DataTypes.STRING,
-         notNull: true
-       },
-       CategoryId: {
-         type: DataTypes.INTEGER,
-         notNull: true
+         allowNull: true
        },
        MaxContestants: {
          type: DataTypes.INTEGER,
-         notNull: true
+         allowNull: true
        },
        Status: {
          type: DataTypes.STRING,
-         notNull: true
+         allowNull: true
        },
        Pdf: {
          type: DataTypes.STRING,
-         notNull: true
+         allowNull: true
        }
      }, {
        timestamps: false,
-       tableName: 'Events',
-       freezeTableName: true
-     }, {
-       indexes: [
-         { type: 'FULLTEXT', fields: 'name' }
-       ]
-     },{
        classMethods: {
          associate: function(models) {
            Events.belongsTo(models.Category);
          }
-       }
+       },
+       indexes: [
+         {
+           type: 'FULLTEXT',name: 'search_idx', fields: ['Description','Name','Society']
+         }
+       ]
      });
      return Events;
    };

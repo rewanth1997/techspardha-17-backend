@@ -3,23 +3,24 @@ module.exports = function(sequelize, DataTypes) {
     Id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: true // Automatically gets converted to SERIAL for postgres
+      autoIncrement: true
     },
-    Name: DataTypes.STRING
+    Name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   }, {
     timestamps: false,
-    tableName: 'Category',
-    freezeTableName: true
-  },{
-    Indexes: [
-      { type: 'FULLTEXT', fields: ['Name'] }
-    ]
-  }, {
     classMethods: {
       associate: function(models) {
         Category.hasMany(models.Events);
+      },
+    indexes: [
+      {
+        type: 'FULLTEXT',name: 'search_idx', fields: ['Name']
       }
-    }
+    ]
+  }
   });
   return Category;
 };
