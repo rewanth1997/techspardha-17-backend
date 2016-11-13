@@ -31,7 +31,7 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate:function(models) {
         StudentDetails.removeAttribute('id');
-        StudentDetails.belongsTo(models.Students,{foreignKey:'id'})
+        StudentDetails.belongsTo(models.Students,{foreignKey:'Id'})
       }
 
     }

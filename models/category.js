@@ -1,25 +1,23 @@
+
 module.exports = function(sequelize, DataTypes) {
-  var Category = sequelize.define("Category", {
+  var Category = sequelize.define("Category", {        
     Id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true // Automatically gets converted to SERIAL for postgres
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true ,
     },
-    Name: DataTypes.STRING
+    Name: {
+      type:DataTypes.STRING,
+      allowNull: false
+    } 
   }, {
-    timestamps: false,
-    tableName: 'Category',
-    freezeTableName: true
-  },{
-    Indexes: [
-      { type: 'FULLTEXT', fields: ['Name'] }
-    ]
-  }, {
+    timestamps:false,
+    freezeTableName: true,
     classMethods: {
-      associate: function(models) {
-        Category.hasMany(models.Events);
+      associate:function(models) {
+         Category.hasMany(models.Interests);
       }
-    }
+   }
   });
   return Category;
 };

@@ -1,17 +1,17 @@
 module.exports = function(sequelize, DataTypes) {
   var Interests = sequelize.define("Interests", { 
-    StudentId: {
-      type: DataTypes.INTEGER,           //insertion of id and foreign key in the tables
-      allowNull: false
-     },
-    CategoryId: {
-      type: DataTypes.INTEGER,           //insertion of id and foreign key in the tables
-      allowNull: false
-     }
-   
+     Id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true ,
+    },
   }, {
     timestamps:false,
     classMethods: {
+      associate:function(models) {
+        Interests.belongsTo(models.Category);
+        Interests.belongsTo(models.Students);
+      }
 
     }
   });

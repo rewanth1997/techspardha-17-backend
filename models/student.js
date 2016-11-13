@@ -1,17 +1,16 @@
 
 module.exports = function(sequelize, DataTypes) {
   var Students = sequelize.define("Students", {        
-    id: {
+    Id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true ,
     },
-    name: {
+    Name: {
       type:DataTypes.STRING,
       allowNull: false
     } ,
-
-    email: {
+    Email: {
       type:DataTypes.STRING,
       allowNull: false
     } ,
@@ -19,7 +18,8 @@ module.exports = function(sequelize, DataTypes) {
     timestamps:false,
     classMethods: {
       associate:function(models) {
-        Students.hasOne(models.StudentDetails,{foreignKey:'id'})
+        Students.hasOne(models.StudentDetails,{foreignKey:'Id'});
+        Students.hasMany(models.Interests);
       }
    }
   });
