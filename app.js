@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//app.use('/',tokenMiddleware);   to be changed for main login api 
+app.use('/',tokenMiddleware);   
 app.use('/', adminMiddleware);
 app.use('/api', index);
 
