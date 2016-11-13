@@ -1,31 +1,22 @@
-"use strict";
-
-module.exports = function(sequelize, Datatypes) {
+module.exports = function(sequelize, DataTypes) {
   var TeamInvites = sequelize.define("TeamInvites", {
-    TeamId: {
-		  type: Datatypes.INTEGER
-		  /*references: {
-        model: 'teams',
-        key: 'id'             
-      }*/
-    },
-    StudentId: {
-    	type: Datatypes.INTEGER
-    	/*references: {
-        model: 'student',
-        key: 'id'
-      }*/
-    },
+    Id: {
+			type: DataTypes.INTEGER,
+			primaryKey: true,
+			autoIncrement: true
+		},
     Status: {
-      type: Datatypes.BOOLEAN
+      type: DataTypes.BOOLEAN,
+      allowNull: false
     }
   }, {
+      timestamps: false,
       classMethods: {
       associate: function(models) {
-        TeamInvites.belongsTo(models.Teams, {as: 'Team'});
+        TeamInvites.belongsTo(models.Teams);
         TeamInvites.belongsTo(models.Students, {as: 'Student'});
       }
     }
   });
   return TeamInvites;
-}
+};

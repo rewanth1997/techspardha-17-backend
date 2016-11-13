@@ -1,5 +1,3 @@
-"use strict";
-
 module.exports = function (sequelize, Datatypes) {
 	var Students = sequelize.define("Students", {
 		Name: {
@@ -14,9 +12,9 @@ module.exports = function (sequelize, Datatypes) {
 		classMethods: {
 			associate: function(models) {
 				Students.hasMany(models.TeamInvites);
-				Students.hasMany(models.Teams);
+				//Students.hasMany(models.Teams);
 			}
 		}
 	});
 	return Students;
-}
+};
