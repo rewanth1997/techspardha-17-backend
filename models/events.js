@@ -2,11 +2,6 @@
    'use strict';
    module.exports = function(sequelize, DataTypes) {
      var Events = sequelize.define("Events", {        //Must be same as table name
-       Id: {
-         type: DataTypes.INTEGER,
-         primaryKey: true,
-         autoIncrement: true // Automatically gets converted to SERIAL for postgres
-       },
        Name: {
          type: DataTypes.STRING,
          notNull: true
@@ -43,10 +38,6 @@
          type: DataTypes.STRING,
          notNull: true
        },
-       CategoryId: {
-         type: DataTypes.INTEGER,
-         notNull: true
-       },
        MaxContestants: {
          type: DataTypes.INTEGER,
          notNull: true
@@ -61,18 +52,16 @@
        }
      }, {
        timestamps: false,
-       tableName: 'Events',
-       freezeTableName: true
-     }, {
-       indexes: [
-         { type: 'FULLTEXT', fields: 'name' }
-       ]
-     },{
        classMethods: {
          associate: function(models) {
            Events.belongsTo(models.Category);
          }
-       }
+       },
+       indexes: [
+         {
+           type: 'FULLTEXT',name: 'search_idx', fields: ['Description','Name','Society']
+         }
+       ]
      });
      return Events;
    };
