@@ -12,13 +12,16 @@ module.exports = function(sequelize, Datatypes) {
 				model: 'events',
 				key: 'id'	
 			}*/
+		},
+		TeamLeaderId: {
+			type: Datatypes.INTEGER
 		}
 	}, {
 		classMethods: {
 			associate: function(models) {
 				Teams.belongsTo(models.Events, {as: 'Event'});
 				Teams.hasMany(models.TeamInvites, {onDelete: 'cascade'});
-				Teams.hasMany(models.TeamUsers, {onDelete: 'cascade'});
+				Teams.belongsTo(models.Students, {as: 'TeamLeader'});
 			}
 		}
 	});

@@ -53,7 +53,8 @@ create table teams (
 # to the teamUsers table
 create table teamInvites (
   teamId integer REFERENCES teams.id,
-  studentId integer REFERENCES student.id
+  studentId integer REFERENCES student.id,
+  accepted boolean
 ) engine = innodb;
 
 create table events (

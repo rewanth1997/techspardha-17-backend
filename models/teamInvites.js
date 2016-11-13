@@ -3,18 +3,21 @@
 module.exports = function(sequelize, Datatypes) {
   var TeamInvites = sequelize.define("TeamInvites", {
     TeamId: {
-		  type: Datatypes.INTEGER,
+		  type: Datatypes.INTEGER
 		  /*references: {
         model: 'teams',
         key: 'id'             
       }*/
     },
     StudentId: {
-    	type: Datatypes.INTEGER,
+    	type: Datatypes.INTEGER
     	/*references: {
         model: 'student',
         key: 'id'
       }*/
+    },
+    Status: {
+      type: Datatypes.BOOLEAN
     }
   }, {
       classMethods: {
