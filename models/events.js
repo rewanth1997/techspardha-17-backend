@@ -4,51 +4,51 @@
      var Events = sequelize.define("Events", {        //Must be same as table name
        Name: {
          type: DataTypes.STRING,
-         notNull: true
+         allowNull: false
        },
        Description: {
          type: DataTypes.STRING,
-         notNull: true
+         allowNull: false
        },
        Venue: {
          type: DataTypes.STRING,
-         notNull: true
+         allowNull: true
        },
        StartTime: {
          type: DataTypes.STRING,
-         notNull: true
+         allowNull: true
        },
        EndTime: {
          type: DataTypes.STRING,
-         notNull: true
+         allowNull: true
        },
        StartDate: {
          type: DataTypes.STRING,
-         notNull: true
+         allowNull: true
        },
        EndDate: {
          type: DataTypes.STRING,
-         notNull: true
+         allowNull: true
        },
        CurrentRound: {
          type: DataTypes.STRING,
-         notNull: true
+         allowNull: true
        },
        Society: {
          type: DataTypes.STRING,
-         notNull: true
+         allowNull: true
        },
        MaxContestants: {
          type: DataTypes.INTEGER,
-         notNull: true
+         allowNull: true
        },
        Status: {
          type: DataTypes.STRING,
-         notNull: true
+         allowNull: true
        },
        Pdf: {
          type: DataTypes.STRING,
-         notNull: true
+         allowNull: true
        }
      }, {
        timestamps: false,
