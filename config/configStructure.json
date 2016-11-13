@@ -5,7 +5,7 @@
     "database": "techspardha2017",
     "host": "127.0.0.1",
     "dialect": "mysql",
-    "secret": "gawdstech"
+    "secret": "haha this is not our app secret"
   },
   "production": {
     "username": "root",
@@ -13,6 +13,6 @@
     "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "mysql",
-    "secret": "gawdstech"
+    "secret": "haha this is not our app secret"
   }
 }
