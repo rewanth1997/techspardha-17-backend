@@ -1,66 +1,73 @@
-"use strict";
-
-module.exports = function(sequelize, DataTypes) {
-  var Events = sequelize.define("Events", {        //Must be same as table name
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true // Automatically gets converted to SERIAL for postgres
-    },
-    name: {
-      type: DataTypes.STRING,
-      notNull: true
-    },
-    description: {
-      type: DataTypes.STRING,
-      notNull: true
-    },
-    venue: {
-      type: DataTypes.STRING,
-      notNull: true
-    },
-    startTime: {
-      type: DataTypes.STRING,
-      notNull: true
-    },
-    endTime: {
-      type: DataTypes.STRING,
-      notNull: true
-    },
-    startDate: {
-      type: DataTypes.STRING,
-      notNull: true
-    },
-    endDate: {
-      type: DataTypes.STRING,
-      notNull: true
-    },
-    currentRound: {
-      type: DataTypes.STRING,
-      notNull: true
-    },
-    society: {
-      type: DataTypes.STRING,
-      notNull: true
-    },
-    category: {
-      type: DataTypes.STRING,
-      notNull: true
-    },
-    maxContestants: {
-      type: DataTypes.INTEGER,
-      notNull: true
-    },
-    status: {
-      type: DataTypes.STRING,
-      notNull: true
-    },
-    pdf: {
-      type: DataTypes.STRING,
-      notNull: true
-    }
-  }, {
-    timestamps: false
-  });
-  return Events;
-};
+(function () {
+   'use strict';
+   module.exports = function(sequelize, DataTypes) {
+     var Events = sequelize.define("Events", {
+       Id: {
+         type: DataTypes.INTEGER,
+         primaryKey: true,
+         autoIncrement: true
+       },
+       Name: {
+         type: DataTypes.STRING,
+         allowNull: false
+       },
+       Description: {
+         type: DataTypes.STRING,
+         allowNull: false
+       },
+       Venue: {
+         type: DataTypes.STRING,
+         allowNull: true
+       },
+       StartTime: {
+         type: DataTypes.STRING,
+         allowNull: true
+       },
+       EndTime: {
+         type: DataTypes.STRING,
+         allowNull: true
+       },
+       StartDate: {
+         type: DataTypes.STRING,
+         allowNull: true
+       },
+       EndDate: {
+         type: DataTypes.STRING,
+         allowNull: true
+       },
+       CurrentRound: {
+         type: DataTypes.STRING,
+         allowNull: true
+       },
+       Society: {
+         type: DataTypes.STRING,
+         allowNull: true
+       },
+       MaxContestants: {
+         type: DataTypes.INTEGER,
+         allowNull: true
+       },
+       Status: {
+         type: DataTypes.STRING,
+         allowNull: true
+       },
+       Pdf: {
+         type: DataTypes.STRING,
+         allowNull: true
+       }
+     }, {
+       timestamps: false,
+       classMethods: {
+         associate: function(models) {
+           Events.belongsTo(models.Category);
+         }
+       },
+       indexes: [
+         {
+           type: 'FULLTEXT',name: 'search_idx', fields: ['Description','Name','Society']
+         }
+       ]
+     });
+     return Events;
+   };
+}());

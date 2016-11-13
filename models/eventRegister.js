@@ -2,12 +2,12 @@
 
 module.exports = function(sequelize, DataTypes) {
   var EventRegister = sequelize.define("EventRegister", {
-    id: {
+    Id: {
       primaryKey: true,
       type: DataTypes.INTEGER,
       notNull: true
     },
-    eventId: {
+    EventId: {
       type: DataTypes.INTEGER,
       notNull: true
     }
