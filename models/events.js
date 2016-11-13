@@ -1,66 +1,68 @@
 "use strict";
 
 module.exports = function(sequelize, DataTypes) {
-  var events = sequelize.define("events", {        //Must be same as table name
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true // Automatically gets converted to SERIAL for postgres
-    },
-    name: {
+  var Events = sequelize.define("Events", {        //Must be same as table name
+    Name: {
       type: DataTypes.STRING,
       notNull: true
     },
-    description: {
+    Description: {
       type: DataTypes.STRING,
       notNull: true
     },
-    venue: {
+    Venue: {
       type: DataTypes.STRING,
       notNull: true
     },
-    startTime: {
+    StartTime: {
       type: DataTypes.STRING,
       notNull: true
     },
-    endTime: {
+    EndTime: {
       type: DataTypes.STRING,
       notNull: true
     },
-    startDate: {
+    StartDate: {
       type: DataTypes.STRING,
       notNull: true
     },
-    endDate: {
+    EndDate: {
       type: DataTypes.STRING,
       notNull: true
     },
-    currentRound: {
+    CurrentRound: {
       type: DataTypes.STRING,
       notNull: true
     },
-    society: {
+    Society: {
       type: DataTypes.STRING,
       notNull: true
     },
-    category: {
+    Category: {
       type: DataTypes.STRING,
       notNull: true
     },
-    maxContestants: {
+    MaxContestants: {
       type: DataTypes.INTEGER,
       notNull: true
     },
-    status: {
+    Status: {
       type: DataTypes.STRING,
       notNull: true
     },
-    pdf: {
+    Rubric: {
       type: DataTypes.STRING,
       notNull: true
     }
   }, {
-    timestamps: false
+    Timestamps: false
+  }, {
+    classMethods: {
+      associate: function(models) {
+        Events.hasMany(models.Teams);
+        Events.hasMany(models.TeamUsers);
+      }
+    }
   });
-  return events;
+  return Events;
 };

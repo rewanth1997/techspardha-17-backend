@@ -5,7 +5,7 @@ use techspardha2017;
 create table categories (
   id integer PRIMARY KEY auto_increment,
   name varchar(100) NOT NULL
-);
+) engine = innodb;
 
 create table societies (
   id integer PRIMARY KEY auto_increment,
@@ -35,11 +35,17 @@ create table interests (
   categoryId integer REFERENCES category.id
 ) engine = innodb;
 
+create table teamUsers (
+  status boolean NOT NULL,
+  teamId integer REFERENCES teams.id,
+  studentId integer REFERENCES student.id,
+  eventId integer REFERENCES events.id
+)
 create table teams (
   id integer PRIMARY KEY auto_increment,
   name varchar(30) NOT NULL,
   eventId integer REFERENCES events.id,
-  curLevel integer NOT NULL
+  currentLevel integer NOT NULL
 ) engine = innodb;
 
 # Only pending invites are stored here
@@ -65,7 +71,7 @@ create table events (
   maxContestants integer,
   status varchar(100) NOT NULL,
   pdf varchar(100)
-) engine=innodb;
+) engine = innodb;
 
 create table teamUsers (
   teamId integer REFERENCES teams.id,

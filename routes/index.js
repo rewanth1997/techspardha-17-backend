@@ -2,6 +2,15 @@ var express = require('express');
 var app = express();
 var router = express.Router();
 
+var adminRouter = require('../lib/api/Admin/Admin');
+var eventsRouter = require('../lib/api/Events/Events');
+var userRouter = require('../lib/api/User/User');
+var teamsRouter = require('../lib/api/User2/index');
+
+router.use('/admin', adminRouter);
+router.use('/events', eventsRouter);
+router.use('/user', userRouter);
+router.use('/team', teamsRouter);
 /**
  * Intentionally left stuff here.
  *
@@ -11,9 +20,5 @@ var router = express.Router();
  *
  *
  */
-
-var events = require('./../lib/api/Events/Events');
-
-router.use('/api/events',events);
 
 module.exports = router;
