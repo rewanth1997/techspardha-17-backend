@@ -1,7 +1,12 @@
 (function () {
    'use strict';
    module.exports = function(sequelize, DataTypes) {
-     var Events = sequelize.define("Events", {        //Must be same as table name
+     var Events = sequelize.define("Events", {
+       Id: {
+         type: DataTypes.INTEGER,
+         primaryKey: true,
+         autoIncrement: true
+       },
        Name: {
          type: DataTypes.STRING,
          allowNull: false
