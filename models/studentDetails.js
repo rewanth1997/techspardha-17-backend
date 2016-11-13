@@ -1,33 +1,40 @@
 module.exports = function(sequelize, DataTypes) {
   var StudentDetails = sequelize.define("StudentDetails", { 
-    RollNO:{
+    RollNo:{
       type: DataTypes.INTEGER,           //insertion of id and foreign key in the tables
-      notNull: true
+      allowNull: false
+      
      },
     PhoneNumber: {
       type: DataTypes.STRING,
-      notNull: true
+      allowNull: false
     },
     Branch: {
       type: DataTypes.STRING,
-      notNull: true
+      allowNull: false
     },
     Year: {
       type: DataTypes.STRING,
-      notNull: true
+      allowNull: false
     },
     College: {
       type: DataTypes.STRING,
-      notNull: true
+      allowNull: false
     },
-    Gender:{
+    Gender: {
       type: DataTypes.STRING,
-      notNull: true
+      allowNull: false
     }     
    
   }, {
     timestamps:false,
-    classMethods
+    classMethods: {
+      associate:function(models) {
+        StudentDetails.removeAttribute('id');
+        StudentDetails.belongsTo(models.Students,{foreignKey:'id'})
+      }
+
+    }
   });
   return StudentDetails;
 };

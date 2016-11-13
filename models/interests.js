@@ -1,17 +1,19 @@
 module.exports = function(sequelize, DataTypes) {
   var Interests = sequelize.define("Interests", { 
-    StudentId:{
+    StudentId: {
       type: DataTypes.INTEGER,           //insertion of id and foreign key in the tables
-      notNull: true
+      allowNull: false
      },
-    CategoryId:{
+    CategoryId: {
       type: DataTypes.INTEGER,           //insertion of id and foreign key in the tables
-      notNull: true
+      allowNull: false
      }
    
   }, {
     timestamps:false,
-    classMethods
+    classMethods: {
+
+    }
   });
   return Interests;
 };
