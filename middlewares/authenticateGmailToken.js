@@ -1,4 +1,4 @@
-var reques = require('request');
+var request = require('request');
 var Response = require('../lib/Response');
 var statusCodes = require('../lib/statusCodes');
 var authenticateGmailToken = function(req,res,next) {
