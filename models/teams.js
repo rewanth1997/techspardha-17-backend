@@ -17,8 +17,8 @@ module.exports = function(sequelize, Datatypes) {
 		classMethods: {
 			associate: function(models) {
 				Teams.belongsTo(models.Events, {as: 'Event'});
-				Teams.hasMany(models.TeamInvites);
-				Teams.hasMany(models.TeamUsers);
+				Teams.hasMany(models.TeamInvites, {onDelete: 'cascade'});
+				Teams.hasMany(models.TeamUsers, {onDelete: 'cascade'});
 			}
 		}
 	});

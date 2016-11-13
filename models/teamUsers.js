@@ -11,7 +11,7 @@ module.exports = function(sequelize, Datatypes) {
 	}, {
 		classMethods: {
 			associate: function(models) {
-				TeamUsers.belongsTo(models.Teams, {as: 'Team'});
+				TeamUsers.belongsTo(models.Teams, {as: 'Team', foreignKeyConstraint: true, onDelete: 'cascade'});
 				TeamUsers.belongsTo(models.Students, {as: 'Student'});
 			}
 		}
