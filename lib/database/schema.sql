@@ -43,17 +43,21 @@ create table teamUsers (
 )
 create table teams (
   id integer PRIMARY KEY auto_increment,
+  name varchar(30) NOT NULL,
   eventId integer REFERENCES events.id,
-  curLevel integer NOT NULL
+  currentLevel integer NOT NULL
 ) engine = innodb;
 
+# Only pending invites are stored here
+# If user accepts the request it will be added
+# to the teamUsers table
 create table teamInvites (
   teamId integer REFERENCES teams.id,
   studentId integer REFERENCES student.id,
-  status varchar(100)
+  accepted boolean
 ) engine = innodb;
 
-create table events(
+create table events (
   id integer PRIMARY KEY auto_increment,
   name varchar(100),
   description text NOT NULL,
@@ -71,10 +75,10 @@ create table events(
 ) engine = innodb;
 
 create table teamUsers (
-  status boolean NOT NULL,
   teamId integer REFERENCES teams.id,
   studentId integer REFERENCES student.id,
-  eventId integer REFERENCES events.id
+  eventId integer REFERENCES events.id,
+  isAdmin boolean
 ) engine=innodb;
 
 create table guestLec (
@@ -91,7 +95,7 @@ create table wishList(
   studentId integer REFERENCES student.id
 ) engine = innodb;
 
-create table coordinatorUsers(
+create table coordinatorUsers (
   id integer PRIMARY KEY auto_increment,
   name varchar(100) NOT NULL,
   username varchar(100) unique NOT NULL,
@@ -99,7 +103,7 @@ create table coordinatorUsers(
   phoneNo varchar(15) NOT NULL
 ) engine = innodb;
 
-create table coordinatorPanel(
-  coordinatorId integer REFERENCES coordinatorUsers (Id),
-  eventName varchar(100) REFERENCES eventsList (eventName)
+create table coordinatorPanel (
+  coordinatorId integer REFERENCES coordinatorUsers (id),
+  eventId varchar(100) REFERENCES events (name)
 ) engine = innodb;

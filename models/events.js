@@ -60,6 +60,7 @@
        classMethods: {
          associate: function(models) {
            Events.belongsTo(models.Category);
+           Events.hasMany(models.Teams);
          }
        },
        indexes: [

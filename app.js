@@ -11,6 +11,10 @@ var adminMiddleware = require('./middlewares/adminMiddleware');
 var app = express();
 var tokenMiddleware = require('./lib/api/middleware/tokenSecurity');
 
+/* For Debugging */
+//var tokenService = require('./lib/services/tokenService');            // Just for debug token
+//console.log(tokenService.generateToken({email: 'test@gmail.com', id: 1}));
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

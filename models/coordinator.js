@@ -1,11 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
-  var Coordinator = sequelize.define("Coordinator", {
-    name: DataTypes.STRING,
-    username: DataTypes.STRING,
-    password: DataTypes.STRING,
-    phoneNo: DataTypes.BIGINT
+  var Coordinators = sequelize.define("Coordinators", {
+    Name: DataTypes.STRING,
+    Username: DataTypes.STRING,
+    Password: DataTypes.STRING,
+    PhoneNo: DataTypes.BIGINT
   }, {
   });
 
-  return Coordinator;
+  return Coordinators;
 };
