@@ -1,3 +1,4 @@
+
 module.exports = function(sequelize, DataTypes) {
   var Students = sequelize.define("Students", {        
     Id: {
