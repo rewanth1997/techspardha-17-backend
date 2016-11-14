@@ -43,13 +43,7 @@ license.
 ### Miscellaneous
 * [Requires At Top](#requires-at-top)
 
-
-## Formatting
-
-You may want to use [editorconfig.org](http://editorconfig.org/) to enforce the formatting settings in your editor. Use the [Node.js Style Guide .editorconfig file](.editorconfig) to have indentation, newslines and whitespace behavior automatically set to the rules set up below.
-
-
-### Folder Structure
+### Folder structure
 
 *  ``` config ``` all environment variables, configuration files, secrets etc. to be placed in this directory.
 *  ```lib``` holds the main code for the api
@@ -58,6 +52,10 @@ You may want to use [editorconfig.org](http://editorconfig.org/) to enforce the 
 * ```middlewares``` add middlewares to be put here.
 * ```models``` every schema (table) represents one model in this directory
 * ```routes``` defines base routes for api components (present in ```lib```)
+
+## Formatting
+
+You may want to use [editorconfig.org](http://editorconfig.org/) to enforce the formatting settings in your editor. Use the [Node.js Style Guide .editorconfig file](.editorconfig) to have indentation, newslines and whitespace behavior automatically set to the rules set up below.
 
 ### 2 Spaces for indentation
 

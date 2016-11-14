@@ -9,7 +9,7 @@ var path = require('path');
 var index = require('./routes/index');
 var adminMiddleware = require('./middlewares/adminMiddleware');
 var app = express();
-var tokenMiddleware = require('./lib/api/middleware/tokenSecurity');
+var tokenMiddleware = require('./middlewares/tokenSecurity');
 
 /* For Debugging */
 //var tokenService = require('./lib/services/tokenService');            // Just for debug token
@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/',tokenMiddleware);   
+app.use('/',tokenMiddleware);
 app.use('/', adminMiddleware);
 app.use('/api', index);
 
