@@ -1,5 +1,6 @@
+
 module.exports = function(sequelize, DataTypes) {
-  var Category = sequelize.define("Category", {
+  var Category = sequelize.define("Category", {        
     Id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -14,6 +15,7 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         Category.hasMany(models.Events);
+        Category.hasMany(models.Interests);
       },
     indexes: [
       {

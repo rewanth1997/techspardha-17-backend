@@ -20,8 +20,7 @@
     "knex": "*",
     "morgan": "~1.6.1",
     "mysql": "*",
-    "passport": "*",
-    "passport-local": "*",
+    "request": "^2.78.0",
     "sequelize": "^3.25.0",
     "serve-favicon": "~2.3.0"
   }
