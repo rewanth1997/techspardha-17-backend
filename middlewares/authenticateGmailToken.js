@@ -1,8 +1,8 @@
 var request = require('request');
 var Response = require('../lib/Response');
 var statusCodes = require('../lib/statusCodes');
-var authenticateGmailToken = function(req,res,next) {
-var userToken = JSON.parse(req.body.gmailToken);
+var authenticateGmailToken = function(req,res,next) { 
+var userToken = req.body.gmailToken;
 request.get("https://www.googleapis.com/plus/v1/people/me?access_token="+userToken,function(error,response,body){
   if(response.statusCode == 200) {
   	var bod = JSON.parse(response.body);

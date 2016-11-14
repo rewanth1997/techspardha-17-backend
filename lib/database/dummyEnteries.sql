@@ -8,7 +8,7 @@ INSERT INTO `StudentDetails` (`RollNo`,`PhoneNumber`,`Branch`,`Year`,`College`,`
 INSERT INTO `StudentDetails` (`RollNo`,`PhoneNumber`,`Branch`,`Year`,`College`,`Gender`,`Id`) VALUES ('1140581','8747456235454','CS','4','NIT','male','4');
 INSERT INTO `Category`(`Name`) VALUES('Managerial');
 INSERT INTO `Category`(`Name`) VALUES('Technical');
-INSERT INTO `Category`(`Name`) VALUES('Faltu');
+INSERT INTO `Category`(`Name`) VALUES('Techno Managerial');
 INSERT INTO `Category`(`Name`) VALUES('Gawds Special');
 INSERT INTO `Interests` (`Id`,`CategoryId`,`StudentId`) VALUES (DEFAULT,1,1);
 INSERT INTO `Interests` (`Id`,`CategoryId`,`StudentId`) VALUES (DEFAULT,2,1);
