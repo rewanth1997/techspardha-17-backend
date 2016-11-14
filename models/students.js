@@ -1,20 +1,27 @@
-module.exports = function (sequelize, Datatypes) {
-	var Students = sequelize.define("Students", {
-		Name: {
-		  type: Datatypes.STRING,
-		},
-		Email: {
-			type: Datatypes.STRING,
-			notNull: true,
-			unique: true
-		}
-	}, {
-		classMethods: {
-			associate: function(models) {
-				Students.hasMany(models.TeamInvites);
-				//Students.hasMany(models.Teams);
-			}
-		}
-	});
-	return Students;
+module.exports = function(sequelize, DataTypes) {
+  var Students = sequelize.define("Students", {        
+    Id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true ,
+    },
+    Name: {
+      type:DataTypes.STRING,
+      allowNull: false
+    } ,
+    Email: {
+      type:DataTypes.STRING,
+      allowNull: false
+    } ,
+  }, {
+    timestamps:false,
+    classMethods: {
+      associate:function(models) {
+        Students.hasOne(models.StudentDetails,{foreignKey:'Id'});
+        Students.hasMany(models.Interests);
+        Students.hasMany(models.TeamInvites);
+      }
+   }
+  });
+  return Students;
 };
