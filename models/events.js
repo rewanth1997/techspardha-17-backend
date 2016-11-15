@@ -19,27 +19,15 @@
          type: DataTypes.STRING,
          allowNull: true
        },
-       StartTime: {
-         type: DataTypes.STRING,
+       Start: {
+         type: DataTypes.DATE,
          allowNull: true
        },
-       EndTime: {
-         type: DataTypes.STRING,
-         allowNull: true
-       },
-       StartDate: {
-         type: DataTypes.STRING,
-         allowNull: true
-       },
-       EndDate: {
-         type: DataTypes.STRING,
+       End: {
+         type: DataTypes.DATE,
          allowNull: true
        },
        CurrentRound: {
-         type: DataTypes.STRING,
-         allowNull: true
-       },
-       Society: {
          type: DataTypes.STRING,
          allowNull: true
        },
@@ -59,13 +47,15 @@
        timestamps: false,
        classMethods: {
          associate: function(models) {
+           Events.belongsTo(models.Society);
            Events.belongsTo(models.Category);
            Events.hasMany(models.Teams);
+
          }
        },
        indexes: [
          {
-           type: 'FULLTEXT',name: 'search_idx', fields: ['Description','Name','Society']
+           type: 'FULLTEXT',name: 'search_idx', fields: ['Description','Name']
          }
        ]
      });

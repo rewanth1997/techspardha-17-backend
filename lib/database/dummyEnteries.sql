@@ -22,3 +22,5 @@ INSERT INTO `Interests` (`Id`,`CategoryId`,`StudentId`) VALUES (DEFAULT,2,4);
 INSERT INTO `Interests` (`Id`,`CategoryId`,`StudentId`) VALUES (DEFAULT,3,4);
 INSERT INTO `Interests` (`Id`,`CategoryId`,`StudentId`) VALUES (DEFAULT,4,4);
 
+INSERT INTO `Coordinators` (`Id`, `Name`, `Username`, `Email`, `Password`, `PhoneNo`, `createdAt`, `updatedAt`) VALUES (NULL, 'Anshul', 'malikanshul', 'malikanshul29@gmail.com', '123', '4444', '2016-11-30 00:00:00', '2016-11-30 00:00:00')
+INSERT INTO `Societies` (`Id`, `name`) VALUES (NULL, 'Technobyte');
