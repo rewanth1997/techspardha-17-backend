@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var router = express.Router();
 
-var adminRouter = require('../lib/api/Admin/Admin');
+var adminRouter = require('../lib/api/Admin');
 var eventsRouter = require('../lib/api/Events/Events');
 var eventRouter = require('../lib/api/Events/Event');
 var userRouter = require('../lib/api/User/User');
