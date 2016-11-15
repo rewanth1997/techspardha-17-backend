@@ -8,7 +8,11 @@ module.exports = function(sequelize, DataTypes) {
 		Name: {
 			type: DataTypes.STRING,
 			notNull: true
-		}
+		},
+    CurrentRound: {
+      type: DataTypes.INTEGER,
+      notNull: true
+    }
 	}, {
 		timestamps: false,
 		classMethods: {

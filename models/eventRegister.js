@@ -10,6 +10,10 @@ module.exports = function(sequelize, DataTypes) {
     EventId: {
       type: DataTypes.INTEGER,
       notNull: true
+    },
+    CurrentRound: {
+      type: DataTypes.INTEGER,
+      notNull: true
     }
   }, {
     timestamps: false
