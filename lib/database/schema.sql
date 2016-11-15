@@ -103,7 +103,7 @@ create table coordinatorUsers (
   phoneNo varchar(15) NOT NULL
 ) engine = innodb;
 
-create table coordinatorPanel (
+create table coordinatorEvents (
   coordinatorId integer REFERENCES coordinatorUsers (id),
   eventId varchar(100) REFERENCES events (name)
 ) engine = innodb;
