@@ -7,7 +7,7 @@ module.exports = function(req, res, next) {
 
   if(!req.user) {
     r.status = statusCodes.INVALID_TOKEN;
-    res.end(r.toString());
+    res.json(r);
   }
 
   models.Coordinators.findAll({
@@ -20,11 +20,11 @@ module.exports = function(req, res, next) {
     }
     else {
       r.status = statusCodes.NOT_AUTHORIZED;
-      res.end(r.toString());
+      res.json(r);
     }
   }).catch(function(error) {
     console.error("Error occured while checking for admin user " + error.stack);
     r.status = statusCodes.SERVER_ERROR;
-    res.end(r.toString());
+    res.json(r);
   });
 };

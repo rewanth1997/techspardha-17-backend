@@ -1,5 +1,3 @@
-"use strict";
-
 module.exports = function(sequelize, DataTypes) {
   var EventRegister = sequelize.define("EventRegister", {
     Id: {

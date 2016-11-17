@@ -1,9 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
-  var StudentDetails = sequelize.define("StudentDetails", { 
+  var StudentDetails = sequelize.define("StudentDetails", {
     RollNo:{
       type: DataTypes.INTEGER,           //insertion of id and foreign key in the tables
       allowNull: false
-      
+
      },
     PhoneNumber: {
       type: DataTypes.STRING,
@@ -24,14 +24,17 @@ module.exports = function(sequelize, DataTypes) {
     Gender: {
       type: DataTypes.STRING,
       allowNull: false
-    }     
-   
+    }
+
   }, {
     timestamps:false,
     classMethods: {
       associate:function(models) {
         StudentDetails.removeAttribute('id');
-        StudentDetails.belongsTo(models.Students,{foreignKey:'Id'})
+        StudentDetails.belongsTo(models.Students,{
+          foreignKey:'Id',
+          as: 'Profile'
+        });
       }
 
     }
