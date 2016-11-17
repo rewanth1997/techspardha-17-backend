@@ -15,14 +15,5 @@ router.use('/event',eventRouter);
 router.use('/user', userRouter);
 router.use('/teams', teamsRouter);
 router.use('/team', teamRouter);
-/**
- * Intentionally left stuff here.
- *
- * Only contains information about route and
- * the module which handles that route, NO
- * actual code to be written here
- *
- *
- */
 
 module.exports = router;
