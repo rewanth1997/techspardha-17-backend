@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
-  var Interests = sequelize.define("Interests", { 
-     Id: {
+  var Interests = sequelize.define("Interests", {
+    Id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true ,

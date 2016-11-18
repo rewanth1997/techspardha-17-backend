@@ -5,14 +5,23 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true,
       autoIncrement: true
     },
-    name: DataTypes.STRING
+    Name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    Description: DataTypes.STRING
   }, {
     timestamps: false,
     classMethods: {
       associate: function(models) {
         Society.hasMany(models.Events);
       }
-    }
+    },
+    indexes: [
+      {
+        type: 'FULLTEXT',name: 'search_idx', fields: ['Description','Name']
+      }
+    ]
   });
 
   return Society;
