@@ -1,6 +1,6 @@
 
 module.exports = function(sequelize, DataTypes) {
-  var Students = sequelize.define("Students", {        
+  var Students = sequelize.define("Students", {
     Id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -18,7 +18,7 @@ module.exports = function(sequelize, DataTypes) {
     timestamps:false,
     classMethods: {
       associate:function(models) {
-        Students.hasOne(models.StudentDetails,{foreignKey:'Id'});
+        Students.hasOne(models.StudentDetails,{foreignKey:'Id', as: 'Details'});
         Students.hasMany(models.Interests);
         Students.hasMany(models.TeamInvites);
       }

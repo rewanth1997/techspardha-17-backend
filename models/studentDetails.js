@@ -24,8 +24,11 @@ module.exports = function(sequelize, DataTypes) {
     Gender: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    IsNew: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
-
   }, {
     timestamps:false,
     classMethods: {
