@@ -1,22 +1,28 @@
-"use strict";
-
 module.exports = function(sequelize, DataTypes) {
   var EventRegister = sequelize.define("EventRegister", {
     Id: {
       primaryKey: true,
       type: DataTypes.INTEGER,
-      notNull: true
+      autoIncrement: true,
+      allowNull: true
     },
     EventId: {
       type: DataTypes.INTEGER,
-      notNull: true
+      allowNull: true
     },
     CurrentRound: {
       type: DataTypes.INTEGER,
-      notNull: true
+      allowNull: true
     }
   }, {
-    timestamps: false
+    timestamps: false,
+    classMethods: {
+      associate: function(models) {
+        EventRegister.belongsTo(models.Students);
+        EventRegister.belongsTo(models.Events);
+        EventRegister.belongsTo(models.Teams);
+      }
+    }
   });
   return EventRegister;
 };

@@ -2,8 +2,10 @@
   "name": "techspardha2017-backend",
   "version": "0.0.0",
   "private": true,
+  "main": "./bin/www",
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node_modules/pm2/bin/pm2 start ./bin/www",
+    "stop": "node_modules/pm2/bin/pm2 stop www"
   },
   "dependencies": {
     "bcrypt-nodejs": "*",
@@ -15,12 +17,14 @@
     "ejs": "*",
     "express": "~4.13.1",
     "express-session": "^1.14.1",
+    "google-auth-library": "^0.9.10",
     "jade": "~1.11.0",
     "jsdoc": "^3.4.3",
     "jshint": "^2.9.4",
     "knex": "*",
     "morgan": "~1.6.1",
     "mysql": "*",
+    "pm2": "^2.1.6",
     "request": "^2.78.0",
     "sequelize": "^3.25.0",
     "serve-favicon": "~2.3.0"

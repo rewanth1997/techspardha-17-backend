@@ -1,6 +1,6 @@
 
 module.exports = function(sequelize, DataTypes) {
-  var Category = sequelize.define("Category", {        
+  var Category = sequelize.define("Category", {
     Id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -9,7 +9,8 @@ module.exports = function(sequelize, DataTypes) {
     Name: {
       type: DataTypes.STRING,
       allowNull: false
-    }
+    },
+    Description: DataTypes.STRING
   }, {
     timestamps: false,
     classMethods: {
@@ -19,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
       },
     indexes: [
       {
-        type: 'FULLTEXT',name: 'search_idx', fields: ['Name']
+        type: 'FULLTEXT',name: 'search_idx', fields: ['Name', 'Description']
       }
     ]
   }

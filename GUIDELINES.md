@@ -7,7 +7,7 @@ license.
 
 ![Creative Commons License](http://i.creativecommons.org/l/by-sa/3.0/88x31.png)
 
-### Folder Structure
+### Directory Structure
 * [Place files in the right place](#folder-structure)
 
 ### Formatting
