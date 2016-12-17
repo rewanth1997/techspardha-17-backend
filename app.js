@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var path = require('path');
+var cors = require('cors');
 
 var index = require('./routes/index');
 var adminMiddleware = require('./middlewares/adminMiddleware');
@@ -20,13 +21,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+/*
 // CORS support 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
+*/
+
+//CORS Support
+app.use(cors({credentials: true, origin: true}));
 
 app.use('/',tokenMiddleware);
 app.use('/api', index);
