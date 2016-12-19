@@ -5,7 +5,7 @@ var statusCodes = require('../lib/statusCodes');
 var r = new Response();
 
 module.exports = function(req, res, next) {
-  var token=req.body.token||req.query.token;
+  var token=req.body.token||req.query.token || req.get('token');
   if(token) {
     try {
       req.user = tokenService.isValid(token);
