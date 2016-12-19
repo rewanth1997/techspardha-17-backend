@@ -40,6 +40,10 @@ module.exports = function(sequelize, DataTypes) {
     Pdf: {
       type: DataTypes.STRING,
       allowNull: true
+    },
+    Rules:{
+      type:DataTypes.STRING,
+      allowNull:true
     }
   }, {
   timestamps: false,
@@ -47,7 +51,16 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
         Events.belongsTo(models.Society);
         Events.belongsTo(models.Category);
+        Events.hasMany(models.CoordinatorEvents);
         Events.hasMany(models.Teams);
+        Events.belongsToMany(models.Coordinators, {
+          "constraints": false,
+          "foreignKey": "EventId",
+          "through": {
+              model: models.CoordinatorEvents,
+              unique: false
+            }
+          });
       }
     },
     indexes: [

@@ -16,6 +16,17 @@ module.exports = function(sequelize, DataTypes) {
     Password: DataTypes.STRING,
     PhoneNo: DataTypes.BIGINT
   }, {
+    associate: function(models) {
+      Coordinators.belongsToMany(models.Events, {
+        "constraints": false,
+        "foreignKey": "CoordinatorId",
+        "through": {
+            model: models.CoordinatorEvents,
+            unique: false
+          }
+        });
+    }
+
   });
 
   return Coordinators;
