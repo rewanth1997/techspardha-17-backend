@@ -26,8 +26,8 @@ INSERT INTO `Coordinators` (`Id`, `Name`, `Username`, `Email`, `Password`, `Phon
 INSERT INTO `Coordinators` (`Id`, `Name`, `Username`, `Email`, `Password`, `PhoneNo`, `createdAt`, `updatedAt`) VALUES (NULL, 'Anshuldlfhaj', 'malikanshuafldsfl', 'malikanshul29dfkjkdl@gmail.com', '123', '4478844', '2016-11-30 00:00:00', '2016-11-30 00:00:00');
 INSERT INTO `Societies` (`Id`, `Name`, `Description`) VALUES (NULL, 'Technobyte', 'Technical society of NIT Kurukshetra');
 Insert into Events(Name,Description,Venue,Start,End,CurrentRound,MaxContestants,Status,Pdf,Rules,CategoryId,SocietyId) Values('Exclibur','This is an event','E101',now(),now(),5,11,"Runnning","rules.pdf","Ther rae no rules for this",1,1);
-Insert into Events(Name,Description,Venue,Start,End,CurrentRound,MaxContestants,Status,Pdf,Rules,CategoryId,SocietyId) Values('Exc','This is an event','E101',now(),now(),5,11,"Runnning","rules.pdf","Ther rae no rules for this",1,1); Query OK, 1 row affected (0.11 sec)
-Insert into Events(Name,Description,Venue,Start,End,CurrentRound,MaxContestants,Status,Pdf,Rules,CategoryId,SocietyId) Values('Akjfk','This is an event','E101',now(),now(),5,11,"Runnning","rules.pdf","Ther rae no rules for this",1,1); Query OK, 1 row affected (0.11 sec)
+Insert into Events(Name,Description,Venue,Start,End,CurrentRound,MaxContestants,Status,Pdf,Rules,CategoryId,SocietyId) Values('Exc','This is an event','E101',now(),now(),5,11,"Runnning","rules.pdf","Ther rae no rules for this",1,1);
+Insert into Events(Name,Description,Venue,Start,End,CurrentRound,MaxContestants,Status,Pdf,Rules,CategoryId,SocietyId) Values('Akjfk','This is an event','E101',now(),now(),5,11,"Runnning","rules.pdf","Ther rae no rules for this",1,1);
 Insert Into CoordinatorEvents values(default,1,1);
 Insert Into CoordinatorEvents values(default,1,2);
 Insert Into CoordinatorEvents values(default,2,2);
