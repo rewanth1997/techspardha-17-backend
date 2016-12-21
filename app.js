@@ -18,8 +18,8 @@ var tokenMiddleware = require('./middlewares/tokenSecurity');
 //console.log(tokenService.generateToken({email: 'test@gmail.com', id: 1}));
 
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit: '10mb'}));
+app.use(bodyParser.urlencoded({ limit: '10mb',parameterLimit: 1000000, extended: false }));
 app.use(cookieParser());
 app.use(compression());
 app.use(express.static(path.join(__dirname, 'public')));
