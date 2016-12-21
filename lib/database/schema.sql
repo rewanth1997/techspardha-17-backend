@@ -81,7 +81,7 @@ create table teamUsers (
   isAdmin boolean
 ) engine=innodb;
 
-create table guestLec (
+create table guestLectures (
   id integer PRIMARY KEY auto_increment,
   startDate DATETIME,
   photo varchar(255),
