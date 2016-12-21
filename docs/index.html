@@ -1,0 +1,892 @@
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/frameworks-40e7a61d91ea0a3ebc1928318338054cb135ca2eea94c700c47b04ed85b98d8c.css" integrity="sha256-QOemHZHqCj68GSgxgzgFTLE1yi7qlMcAxHsE7YW5jYw=" media="all" rel="stylesheet" />
+    <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/github-dc8832cbc25013ebcdcca24529e402cfcea50e4b2bd136b8284fdf8864873636.css" integrity="sha256-3Igyy8JQE+vNzKJFKeQCz86lDksr0Ta4KE/fiGSHNjY=" media="all" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width">
+
+  </head>
+  <body>
+    <div class="markdown-body">
+      <p><a href="#coordinators">Coordinators</a></p>
+
+      <ul>
+      <li><a href="#login">Login</a></li>
+      <li><a href="#get-list-of-events-under-coordination">Get list of events under coordination</a></li>
+      <li><a href="#move-participants-to-next-level">Move participants to next level</a></li>
+      </ul>
+
+      <p><a href="#user">Users</a></p>
+
+      <ul>
+      <li><a href="#login--signup">Login / Signup</a></li>
+      <li><a href="#get-user-info">Get user details</a></li>
+      <li><a href="#update-user-info">Update user details</a></li>
+      <li><a href="#get-user-interests">Get interests</a></li>
+      <li><a href="#add-user-interests">Add user interests</a></li>
+      <li><a href="#remove-category-from-user-interests">Remove category from user interests</a></li>
+      </ul>
+
+      <p><a href="#events">Events</a></p>
+
+      <ul>
+      <li><a href="#create-new-event-coordinator-token-required">Create new Event</a></li>
+      <li><a href="#list-all-events">List all Events</a></li>
+      <li><a href="#get-event-details">Get event details</a></li>
+      <li><a href="#delete-an-event-coordinator-token-required">Delete event</a></li>
+      <li><a href="#search-events">Search Events</a></li>
+      <li><a href="#register-for-event">Register for event</a></li>
+      <li><a href="#get-event-participants">Get participants</a></li>
+      </ul>
+
+      <p><a href="#general">General</a></p>
+
+      <ul>
+      <li><a href="#list-all-categories">List all categories</a></li>
+      <li><a href="#list-all-societies">List all societies</a></li>
+      </ul>
+
+      <p><a href="#teams">Teams</a></p>
+
+      <ul>
+      <li><a href="#create-team">Create team</a></li>
+      <li><a href="#team-invite">Team invite</a></li>
+      <li><a href="#delete-team">Delete team</a></li>
+      <li><a href="#get-all-teams-registered-for-event">Get all teams registered for event</a></li>
+      <li><a href="#get-my-teams">Get list of teams by a user(My teams)</a></li>
+      </ul>
+
+      <h1>
+      <a id="user-content-coordinators" class="anchor" href="#coordinators" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Coordinators</h1>
+
+      <h3>
+      <a id="user-content-login" class="anchor" href="#login" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Login</h3>
+
+      <p><code>POST /admin/login HTTP/1.1</code></p>
+
+      <p>Fields:</p>
+
+      <table>
+      <thead>
+      <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Required</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>username</td>
+      <td>Username of Coordinator</td>
+      <td>string</td>
+      <td>true</td>
+      </tr>
+      <tr>
+      <td>password</td>
+      <td>Password of Coordinator</td>
+      <td>string</td>
+      <td>true</td>
+      </tr>
+      </tbody>
+      </table>
+
+      <p>Response:</p>
+
+      <pre><code>{
+        "status": {
+          "code": 200,
+          "message": "SUCCESS"
+        },
+        "data": {
+          "token": "ACCESS_TOKEN_FOR_FURTHER_USE"
+        }
+      }
+      </code></pre>
+
+      <h3>
+      <a id="user-content-get-list-of-events-under-coordination" class="anchor" href="#get-list-of-events-under-coordination" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get list of events under coordination</h3>
+
+      <p><code>GET /admin/events?token=TOKEN HTTP/1.1</code></p>
+
+      <table>
+      <thead>
+      <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Required</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>token</td>
+      <td>Token obtained by calling <code>/admin/login</code>
+      </td>
+      <td>string</td>
+      <td>true</td>
+      </tr>
+      </tbody>
+      </table>
+
+      <p>Response:</p>
+
+      <pre><code>{
+        "status": {
+          "code": 200,
+          "message": "SUCCESS"
+        },
+        "data": [5,6]
+      }
+      </code></pre>
+
+      <h3>
+      <a id="user-content-move-participants-to-next-level" class="anchor" href="#move-participants-to-next-level" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Move participants to next level</h3>
+
+      <p><code>POST /event/:eventId/forward HTTP/1.1</code></p>
+
+      <table>
+      <thead>
+      <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Required</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>token</td>
+      <td>Token obtained by calling <code>/admin/login</code>
+      </td>
+      <td>string</td>
+      <td>true</td>
+      </tr>
+      <tr>
+      <td>eventId</td>
+      <td>Id of the event</td>
+      <td>array</td>
+      <td>true</td>
+      </tr>
+      <tr>
+      <td>data</td>
+      <td>Array of participant IDs (Team of Individual)</td>
+      <td>array</td>
+      <td>true</td>
+      </tr>
+      </tbody>
+      </table>
+
+      <p>Response:</p>
+
+      <pre><code>{
+        "status": {
+          "code": 200,
+          "message": "SUCCESS"
+        },
+        "data": null
+      }
+      </code></pre>
+
+      <hr>
+
+      <h1>
+      <a id="user-content-user" class="anchor" href="#user" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>User</h1>
+
+      <h3>
+      <a id="user-content-login--signup" class="anchor" href="#login--signup" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Login / Signup:</h3>
+
+      <p><code>POST /user/login HTTP/1.1</code></p>
+
+      <p>Fields:</p>
+
+      <table>
+      <thead>
+      <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Required</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>accessToken</td>
+      <td>Access Token obtained from google login</td>
+      <td>string</td>
+      <td>false</td>
+      </tr>
+      <tr>
+      <td>idToken</td>
+      <td>ID token obtained from google login</td>
+      <td>string</td>
+      <td>false</td>
+      </tr>
+      </tbody>
+      </table>
+
+      <p>Either one of two parameters is required for login</p>
+
+      <p>Response:</p>
+
+      <pre><code>{
+        "status": {
+          "code": 200,
+          "message": "SUCCESS"
+        },
+        "data": {
+          "isNew": true,
+          "token": "ACCESS_TOKEN_FOR_FURTHER_USE"
+        }
+      }
+      </code></pre>
+
+      <p>isNew is true if personal details of the user are not yet acquired (New User).</p>
+
+      <h3>
+      <a id="user-content-get-user-info" class="anchor" href="#get-user-info" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get user info:</h3>
+
+      <p><code>GET /user/me?token=TOKEN HTTP/1.1</code></p>
+
+      <p>Fields:</p>
+
+      <table>
+      <thead>
+      <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Required</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>token</td>
+      <td>Access Token of ID token obtained from login api</td>
+      <td>string</td>
+      <td>true</td>
+      </tr>
+      </tbody>
+      </table>
+
+      <p>Response:</p>
+
+      <pre><code>{
+        "status": {
+          "code": 200,
+          "message": "SUCCESS"
+        },
+        "data": {
+          "RollNo": 1140333,
+          "PhoneNumber": "9050563712",
+          "Branch": "CS",
+          "Year": "3",
+          "College": "NIT",
+          "Gender": "male",
+          "Id": 1,
+          "Profile": {
+            "Name": "Anshul Malik",
+            "Email": "malikanshul29@gmail.com"
+          }
+        }
+      }
+      </code></pre>
+
+      <h3>
+      <a id="user-content-update-user-info" class="anchor" href="#update-user-info" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Update user info:</h3>
+
+      <p><code>POST /user/me?token=TOKEN HTTP/1.1</code></p>
+
+      <p>Fields:</p>
+
+      <table>
+      <thead>
+      <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Required</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>name</td>
+      <td>Name of the user</td>
+      <td>string</td>
+      <td>false</td>
+      </tr>
+      <tr>
+      <td>rollNo</td>
+      <td>Roll number of user</td>
+      <td>integer</td>
+      <td>false</td>
+      </tr>
+      <tr>
+      <td>phoneNumber</td>
+      <td>Phone number of user</td>
+      <td>string</td>
+      <td>false</td>
+      </tr>
+      <tr>
+      <td>branch</td>
+      <td>Major/Branch of user</td>
+      <td>string</td>
+      <td>false</td>
+      </tr>
+      <tr>
+      <td>college</td>
+      <td>College name of user</td>
+      <td>string</td>
+      <td>false</td>
+      </tr>
+      <tr>
+      <td>year</td>
+      <td>Current year of user</td>
+      <td>string</td>
+      <td>false</td>
+      </tr>
+      <tr>
+      <td>token</td>
+      <td>App token obtained after login</td>
+      <td>string</td>
+      <td>true</td>
+      </tr>
+      </tbody>
+      </table>
+
+      <p>Response:</p>
+
+      <pre><code>{
+        "status": {
+          "code": 200,
+          "message": "SUCCESS"
+        },
+        "data": null
+      }
+      </code></pre>
+
+      <h3>
+      <a id="user-content-get-user-interests" class="anchor" href="#get-user-interests" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get user interests:</h3>
+
+      <p><code>GET /user/interests?token=TOKEN HTTP/1.1</code></p>
+
+      <p>Fields:</p>
+
+      <table>
+      <thead>
+      <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Required</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>token</td>
+      <td>App token obtained after login</td>
+      <td>string</td>
+      <td>true</td>
+      </tr>
+      </tbody>
+      </table>
+
+      <p>Response:</p>
+
+      <pre><code>{
+        "status": {
+          "code": 200,
+          "message": "SUCCESS"
+        },
+        "data": [1, 2]
+      }
+      </code></pre>
+
+      <h3>
+      <a id="user-content-add-user-interests" class="anchor" href="#add-user-interests" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Add user interests:</h3>
+
+      <p><code>POST /user/interests HTTP/1.1</code></p>
+
+      <p>Fields:</p>
+
+      <table>
+      <thead>
+      <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Required</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>token</td>
+      <td>App token obtained after login</td>
+      <td>string</td>
+      <td>true</td>
+      </tr>
+      <tr>
+      <td>interests</td>
+      <td>List of category IDs to be added as interests</td>
+      <td>array</td>
+      <td>true</td>
+      </tr>
+      </tbody>
+      </table>
+
+      <p>Response:</p>
+
+      <pre><code>{
+        "status": {
+          "code": 200,
+          "message": "SUCCESS"
+        },
+        "data": null
+      }
+      </code></pre>
+
+      <h3>
+      <a id="user-content-remove-category-from-user-interests" class="anchor" href="#remove-category-from-user-interests" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Remove category from user interests:</h3>
+
+      <p><code>DELETE /user/interests HTTP/1.1</code></p>
+
+      <p>Fields:</p>
+
+      <table>
+      <thead>
+      <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Required</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>token</td>
+      <td>App token obtained after login</td>
+      <td>string</td>
+      <td>true</td>
+      </tr>
+      <tr>
+      <td>interests</td>
+      <td>List of category IDs to be deleted from interests</td>
+      <td>array</td>
+      <td>true</td>
+      </tr>
+      </tbody>
+      </table>
+
+      <p>Response:</p>
+
+      <pre><code>{
+        "status": {
+          "code": 200,
+          "message": "SUCCESS"
+        },
+        "data": null
+      }
+      </code></pre>
+
+      <hr>
+
+      <h1>
+      <a id="user-content-events" class="anchor" href="#events" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events</h1>
+
+      <h3>
+      <a id="user-content-create-new-event-coordinator-token-required" class="anchor" href="#create-new-event-coordinator-token-required" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Create new Event (Coordinator Token Required)</h3>
+
+      <p><code>POST /events HTTP/1.1</code> (Create)</p>
+
+      <p><code>POST /event/:eventId HTTP/1.1</code> (Update)</p>
+
+      <p>Fields:</p>
+
+      <table>
+      <thead>
+      <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Required</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>token</td>
+      <td>Token obtained by calling <code>/admin/login</code>
+      </td>
+      <td>string</td>
+      <td>true</td>
+      </tr>
+      <tr>
+      <td>name</td>
+      <td>Name of the event</td>
+      <td>string</td>
+      <td>true</td>
+      </tr>
+      <tr>
+      <td>description</td>
+      <td>Description about the event</td>
+      <td>string</td>
+      <td>false</td>
+      </tr>
+      <tr>
+      <td>start</td>
+      <td>Start Datetime of the event</td>
+      <td>string</td>
+      <td>true</td>
+      </tr>
+      <tr>
+      <td>end</td>
+      <td>End Datetime of the event</td>
+      <td>string</td>
+      <td>true</td>
+      </tr>
+      <tr>
+      <td>categoryId</td>
+      <td>Category ID of the event</td>
+      <td>integer</td>
+      <td>true</td>
+      </tr>
+      <tr>
+      <td>societyId</td>
+      <td>Society ID of the event</td>
+      <td>integer</td>
+      <td>true</td>
+      </tr>
+      </tbody>
+      </table>
+
+      <p>Datetime is standard javascript new Date() object's string representation.
+      e.g. Tue Nov 15 2016 00:44:20 GMT+0530 (IST)</p>
+
+      <p>Response:</p>
+
+      <pre><code>{
+        "status": {
+          "code": 200,
+          "message": "SUCCESS"
+        },
+        "data": "Event added successfully"
+      }
+      </code></pre>
+
+      <h3>
+      <a id="user-content-list-all-events" class="anchor" href="#list-all-events" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>List all Events:</h3>
+
+      <p><code>GET /events HTTP/1.1</code></p>
+
+      <p>Response:</p>
+
+      <pre><code>{
+        "status": {
+          "code": 200,
+          "message": "SUCCESS"
+        },
+        "data": [
+          {
+            "Id": 5,
+            "Name": "Excaliubur",
+            "SocietyId": 1,
+            "CategoryId": 1
+          }
+        ]
+      }
+      </code></pre>
+
+      <h3>
+      <a id="user-content-get-event-details" class="anchor" href="#get-event-details" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get event details:</h3>
+
+      <p><code>GET /event/:eventId HTTP/1.1</code></p>
+
+      <p>Fields:</p>
+
+      <table>
+      <thead>
+      <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Required</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>eventId</td>
+      <td>ID of event</td>
+      <td>integer</td>
+      <td>true</td>
+      </tr>
+      </tbody>
+      </table>
+
+      <p>Response:</p>
+
+      <pre><code>{
+        "status": {
+          "code": 200,
+          "message": "SUCCESS"
+        },
+        "data": {
+          "Id": 6,
+          "Name": "Excal",
+          "Description": "This is an event",
+          "Venue": null,
+          "Start": "2016-11-14T19:14:20.000Z",
+          "End": "2016-11-14T19:14:20.000Z",
+          "CurrentRound": "0",
+          "MaxContestants": 1,
+          "Status": "Not started",
+          "Pdf": "http://web-resource.com/pdf.pdf",
+          "CategoryId": 1,
+          "SocietyId": 1
+        }
+      }
+      </code></pre>
+
+      <h3>
+      <a id="user-content-delete-an-event-coordinator-token-required" class="anchor" href="#delete-an-event-coordinator-token-required" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Delete an Event (Coordinator Token Required)</h3>
+
+      <p><code>DELETE /event/:eventId HTTP/1.1</code></p>
+
+      <table>
+      <thead>
+      <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Required</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>token</td>
+      <td>Token obtained by calling <code>/admin/login</code>
+      </td>
+      <td>string</td>
+      <td>true</td>
+      </tr>
+      <tr>
+      <td>eventId</td>
+      <td>ID of event to be deleted</td>
+      <td>integer</td>
+      <td>true</td>
+      </tr>
+      </tbody>
+      </table>
+
+      <p>Response:</p>
+
+      <pre><code>{
+        "status": {
+          "code": 200,
+          "message": "SUCCESS"
+        },
+        "data": "Successfully deleted"
+      }
+      </code></pre>
+
+      <h3>
+      <a id="user-content-search-events" class="anchor" href="#search-events" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Search Events:</h3>
+
+      <p><code>GET /events?query=SEARCH_TERM HTTP/1.1</code></p>
+
+      <p>Fields:</p>
+
+      <table>
+      <thead>
+      <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Required</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>query</td>
+      <td>Search query</td>
+      <td>string</td>
+      <td>true</td>
+      </tr>
+      </tbody>
+      </table>
+
+      <p>Response:</p>
+
+      <pre><code>{
+        "status": {
+          "code": 200,
+          "message": "SUCCESS"
+        },
+        "data": [
+          {
+            "Id": 5,
+            "Name": "Excaliubur",
+            "Description": "This is an event",
+            "Venue": null,
+            "Start": "2016-11-14T19:14:20.000Z",
+            "End": "2016-11-14T19:14:20.000Z",
+            "CurrentRound": "0",
+            "MaxContestants": 1,
+            "Status": "Not started",
+            "Pdf": null,
+            "CategoryId": 1,
+            "SocietyId": 1
+          }
+        ]
+      }
+      </code></pre>
+
+      <h3>
+      <a id="user-content-register-for-event" class="anchor" href="#register-for-event" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Register for event:</h3>
+
+      <p><code>POST /event/:eventId/register HTTP/1.1</code></p>
+
+      <p>Fields:</p>
+
+      <table>
+      <thead>
+      <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Required</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>token</td>
+      <td>App token obtained after login</td>
+      <td>string</td>
+      <td>true</td>
+      </tr>
+      </tbody>
+      </table>
+
+      <p>Response:</p>
+
+      <pre><code>{
+        "status": {
+          "code": 200,
+          "message": "SUCCESS"
+        },
+        "data": null
+      }
+      </code></pre>
+
+      <h3>
+      <a id="user-content-get-event-participants" class="anchor" href="#get-event-participants" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get event participants:</h3>
+
+      <p><code>GET /event/:eventId/participants?token=TOKEN HTTP/1.1</code></p>
+
+      <p>Fields:</p>
+
+      <table>
+      <thead>
+      <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Required</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>token</td>
+      <td>Token obtained by calling <code>/admin/login</code>
+      </td>
+      <td>integer</td>
+      <td>true</td>
+      </tr>
+      </tbody>
+      </table>
+
+      <p>Response:</p>
+
+      <pre><code>{
+        "status": {
+          "code": 200,
+          "message": "SUCCESS"
+        },
+        "data": [1, 2]
+      }
+      </code></pre>
+
+      <hr>
+
+      <h1>
+      <a id="user-content-general" class="anchor" href="#general" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>General</h1>
+
+      <h3>
+      <a id="user-content-list-all-categories" class="anchor" href="#list-all-categories" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>List all categories:</h3>
+
+      <p><code>GET /categories HTTP/1.1</code></p>
+
+      <p>Response:</p>
+
+      <pre><code>{
+        "status": {
+          "code": 200,
+          "message": "SUCCESS"
+        },
+        "data": [
+          {
+            "Id": 1,
+            "Name": "Managerial",
+            "Description": null
+          },
+          {
+            "Id": 2,
+            "Name": "Technical",
+            "Description": "Technical events goes here"
+          }
+        ]
+      }
+      </code></pre>
+
+      <h3>
+      <a id="user-content-list-all-societies" class="anchor" href="#list-all-societies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>List all societies:</h3>
+
+      <p><code>GET /user/societies HTTP/1.1</code></p>
+
+      <p>Response:</p>
+
+      <pre><code>{
+        "status": {
+          "code": 200,
+          "message": "SUCCESS"
+        },
+        "data": [
+          {
+            "Id": 1,
+            "Name": "Technobyte",
+            "Description": "Technical society of NIT Kurukshetra"
+          }
+        ]
+      }
+      </code></pre>
+
+      <hr>
+
+      <h1>
+      <a id="user-content-teams" class="anchor" href="#teams" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Teams</h1>
+
+      <h3>
+      <a id="user-content-create-team" class="anchor" href="#create-team" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Create team:</h3>
+
+      <h3>
+      <a id="user-content-team-invite" class="anchor" href="#team-invite" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Team invite:</h3>
+
+      <h3>
+      <a id="user-content-delete-team" class="anchor" href="#delete-team" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Delete team:</h3>
+
+      <h3>
+      <a id="user-content-get-all-teams-registered-for-event" class="anchor" href="#get-all-teams-registered-for-event" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get all teams registered for event</h3>
+
+      <h3>
+      <a id="user-content-get-my-teams" class="anchor" href="#get-my-teams" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get my teams</h3>
+    </div>
+  </body>
+</html>

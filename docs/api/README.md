@@ -29,6 +29,7 @@
 - [Create team](#create-team)
 - [Team invite](#team-invite)
 - [Delete team](#delete-team)
+- [Get all teams registered for event](#get-all-teams-registered-for-event)
 - [Get list of teams by a user(My teams)](#get-my-teams)
 
 # Coordinators
@@ -79,7 +80,7 @@ Response:
 
 ### Move participants to next level
 
-`GET /event/:eventId/forward HTTP/1.1`
+`POST /event/:eventId/forward HTTP/1.1`
 
 | Name  	| Description                            	| Type   	| Required 	|
 |-------	|----------------------------------------	|--------	|----------	|
@@ -110,7 +111,10 @@ Fields:
 
 | Name       	| Description                                         	| Type   	| Required 	|
 |------------	|-----------------------------------------------------	|--------	|----------	|
-| gmailToken 	| Access Token of ID token obtained from google login 	| string 	| true     	|
+| accessToken 	| Access Token obtained from google login        	| string 	| false     	|
+| idToken 	| ID token obtained from google login           	| string 	| false     	|
+
+Either one of two parameters is required for login
 
 Response:
 ```
@@ -165,7 +169,7 @@ Response:
 
 ### Update user info:
 
-`GET /user/me?token=TOKEN HTTP/1.1`
+`POST /user/me?token=TOKEN HTTP/1.1`
 
 Fields:
 
@@ -407,7 +411,7 @@ Response:
 
 ### Register for event:
 
-`GET /event/:eventId/register HTTP/1.1`
+`POST /event/:eventId/register HTTP/1.1`
 
 Fields:
 
@@ -509,6 +513,9 @@ Response:
 
 
 ### Delete team:
+
+
+### Get all teams registered for event
 
 
 ### Get my teams
