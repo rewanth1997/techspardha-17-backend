@@ -19,8 +19,8 @@ router.use('/event',eventRouter);
 router.use('/user', userRouter);
 router.use('/teams', teamsRouter);
 router.use('/team', teamRouter);
-router.use('/guestLecture', guestLectureRouter);
-router.use('/guestLectures', guestLecturesRouter);
+router.use('/guestlecture', guestLectureRouter);
+router.use('/guestlectures', guestLecturesRouters);
 router.use('/wishlist', wishListRouter);
 router.use('/', generalRouter);
 
