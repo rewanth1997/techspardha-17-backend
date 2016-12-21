@@ -21,6 +21,7 @@ module.exports = function(sequelize, DataTypes) {
         Students.hasOne(models.StudentDetails,{foreignKey:'Id', as: 'Details'});
         Students.hasMany(models.Interests);
         Students.hasMany(models.TeamInvites);
+        Students.hasMany(models.WishList);
       }
    }
   });

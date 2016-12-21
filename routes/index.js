@@ -9,7 +9,7 @@ var userRouter = require('../lib/api/User/User');
 var teamsRouter = require('../lib/api/User2/Teams/index');
 var teamRouter = require('../lib/api/User2/Team/index');
 var guestLectureRouter = require('../lib/api/GuestLecture/GuestLecture');
-var guestLectureRouters = require('../lib/api/GuestLecture/GuestLectures');
+var guestLecturesRouter = require('../lib/api/GuestLecture/GuestLectures');
 var wishListRouter = require('../lib/api/GuestLecture/WishList');
 var generalRouter = require('../lib/api/General');
 
@@ -20,7 +20,7 @@ router.use('/user', userRouter);
 router.use('/teams', teamsRouter);
 router.use('/team', teamRouter);
 router.use('/guestlecture', guestLectureRouter);
-router.use('/guestlectures', guestLecturesRouters);
+router.use('/guestlectures', guestLecturesRouter);
 router.use('/wishlist', wishListRouter);
 router.use('/', generalRouter);
 

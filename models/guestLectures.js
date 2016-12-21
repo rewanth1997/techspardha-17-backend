@@ -1,6 +1,6 @@
 
 module.exports = function(sequelize, DataTypes) {
-  var GuestLectures = sequelize.define("GuestLectures", {
+  var GuestLectures = sequelize.define("GuestLecture", {
     Id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     Description: {
     	type: DataTypes.STRING,
-		allowNull: true
+		  allowNull: true
     },
     GuestName: {
       type: DataTypes.STRING,
@@ -30,8 +30,14 @@ module.exports = function(sequelize, DataTypes) {
     	type: DataTypes.STRING,
     	allowNull: true
     }
-  }, {
+  },
+  {
     timestamps: false,
+    ClassMethods: {
+      associate: function(models) {
+        GuestLectures.hasMany(models.WishList);
+      }
+    },
     indexes: [
       {
         type: 'FULLTEXT',name: 'search_idx', fields: ['Description','GuestName']
