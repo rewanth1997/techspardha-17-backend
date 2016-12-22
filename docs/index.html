@@ -14,6 +14,8 @@
       <li><a href="#login">Login</a></li>
       <li><a href="#get-list-of-events-under-coordination">Get list of events under coordination</a></li>
       <li><a href="#move-participants-to-next-level">Move participants to next level</a></li>
+      <li><a href="#send-notification-to-all-participants">Send Notification to all participants</a></li>
+      <li><a href="#send-notification-to-selected-participants">Send Notification to selected participants</a></li>
       </ul>
 
       <p><a href="#user">Users</a></p>
@@ -24,6 +26,8 @@
       <li><a href="#update-user-info">Update user details</a></li>
       <li><a href="#get-user-interests">Get interests</a></li>
       <li><a href="#add-user-interests">Add user interests</a></li>
+      <li><a href="#get-user-notification">Get user notifications</a></li>
+      <li><a href="#set-user-notifications-status">Set user notifications status</a></li>
       <li><a href="#remove-category-from-user-interests">Remove category from user interests</a></li>
       </ul>
 
@@ -188,13 +192,121 @@
       }
       </code></pre>
 
+      <h3>
+        <a id="user-content-send-notification-to-all-participants" class="anchor" href="#send-notification-to-all-participants" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Send notification to all participants</h3>
+
+        <p><code>POST /event/:eventId/notify/all HTTP/1.1</code></p>
+
+        <table>
+        <thead>
+        <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Required</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>token</td>
+        <td>Token obtained by calling <code>/admin/login</code>
+        </td>
+        <td>string</td>
+        <td>true</td>
+        </tr>
+        <tr>
+        <td>eventId</td>
+        <td>Id of the event</td>
+        <td>array</td>
+        <td>true</td>
+        </tr>
+        <tr>
+        <td>message</td>
+        <td>Message to be notified</td>
+        <td>string</td>
+        <td>true</td>
+        </tr>
+        </tbody>
+        </table>
+
+        <p>Response:</p>
+
+        <pre><code>{
+          "status": {
+            "code": 200,
+            "message": "SUCCESS"
+          },
+          "data": ""
+        }
+        </code></pre>
+
+      <h3>
+      <a id="user-content-send-notification-to-selected-participants" class="anchor" href="#send-notification-to-selected-participants" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Send notification to selected participants</h3>
+
+      <p><code>POST /event/:eventId/notify HTTP/1.1</code></p>
+
+      <table>
+      <thead>
+      <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Required</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>token</td>
+      <td>Token obtained by calling <code>/admin/login</code>
+      </td>
+      <td>string</td>
+      <td>true</td>
+      </tr>
+      <tr>
+      <td>eventId</td>
+      <td>Id of the event</td>
+      <td>array</td>
+      <td>true</td>
+      </tr>
+      <tr>
+      <td>data</td>
+      <td>Array of participant IDs (Team of Individual)</td>
+      <td>array</td>
+      <td>true</td>
+      </tr>
+      <tr>
+      <td>message</td>
+      <td>Message to be notified</td>
+      <td>string</td>
+      <td>true</td>
+      </tr>
+      <tr>
+      <td>round</td>
+      <td>Current round of the participant</td>
+      <td>integer</td>
+      <td>true</td>
+      </tr>
+      </tbody>
+      </table>
+
+      <p>Response:</p>
+
+      <pre><code>{
+        "status": {
+          "code": 200,
+          "message": "SUCCESS"
+        },
+        "data": ""
+      }
+      </code></pre>
+
       <hr>
 
       <h1>
       <a id="user-content-user" class="anchor" href="#user" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>User</h1>
 
       <h3>
-      <a id="user-content-login--signup" class="anchor" href="#login--signup" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Login / Signup:</h3>
+      <a id="user-content-login-signup" class="anchor" href="#login--signup" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Login / Signup:</h3>
 
       <p><code>POST /user/login HTTP/1.1</code></p>
 
@@ -442,6 +554,111 @@
           "message": "SUCCESS"
         },
         "data": null
+      }
+      </code></pre>
+
+      <h3>
+      <a id="user-content-get-user-notifications" class="anchor" href="#get-user-notifications" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get user notifications:</h3>
+
+      <p><code>GET  /api/user/me/notifications HTTP/1.1</code></p>
+
+      <p>Fields:</p>
+
+      <table>
+      <thead>
+      <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Required</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>token</td>
+      <td>Access Token of ID token obtained from login api	</td>
+      <td>string</td>
+      <td>true</td>
+      </tr>
+      </tbody>
+      </table>
+
+      <p>Response:</p>
+
+      <pre><code>{
+          "status": {
+          "code": 200,
+          "message": "SUCCESS"
+          },
+          "data": [
+            {
+              "Id": 33,
+              "status": 0,
+              "Notification": {
+                "Message": "Final Test 2",
+                "EventId": 2
+              }
+            },
+            {
+              "Id": 37,
+              "status": 0,
+              "Notification": {
+                "Message": "SelectedAgain",
+                "EventId": 2
+              }
+            }
+        ]
+      }
+      </code></pre>
+
+      <h3>
+      <a id="user-content-set-user-notifications-status" class="anchor" href="#set-user-notifications-status" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Set user notifications status:</h3>
+
+      <p><code>POST /api/user/me/notifications HTTP/1.1</code></p>
+
+      <p>Fields:</p>
+
+      <table>
+      <thead>
+      <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Required</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td>token</td>
+      <td>App token obtained after login</td>
+      <td>string</td>
+      <td>true</td>
+      </tr>
+      <tr>
+      <td>notificationId</td>
+      <td>NotificationId to be changed</td>
+      <td>integer</td>
+      <td>true</td>
+      </tr>
+      <tr>
+      <td>status</td>
+      <td>Status 0 for read and 1 for unread</td>
+      <td>text</td>
+      <td>true</td>
+      </tr>
+      </tbody>
+      </table>
+
+      <p>Response:</p>
+
+      <pre><code>{
+        "status": {
+          "code": 200,
+          "message": "SUCCESS"
+        },
+        "data": [
+          1
+        ]
       }
       </code></pre>
 
