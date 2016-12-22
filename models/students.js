@@ -20,6 +20,7 @@ module.exports = function(sequelize, DataTypes) {
       associate:function(models) {
         Students.hasOne(models.StudentDetails,{foreignKey:'Id', as: 'Details'});
         Students.hasMany(models.Interests);
+        Students.hasMany(models.UsersNotifications);
         Students.hasMany(models.TeamInvites);
         Students.hasMany(models.WishList);
       }

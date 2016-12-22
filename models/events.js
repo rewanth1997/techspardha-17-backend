@@ -53,6 +53,7 @@ module.exports = function(sequelize, DataTypes) {
         Events.belongsTo(models.Category);
         Events.hasMany(models.CoordinatorEvents);
         Events.hasMany(models.Teams);
+        Events.hasMany(models.Notifications);
         Events.belongsToMany(models.Coordinators, {
           "constraints": false,
           "foreignKey": "EventId",
