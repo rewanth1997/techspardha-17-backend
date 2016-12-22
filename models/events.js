@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     Description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     Venue: {
@@ -29,6 +29,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: true
     },
+    TotalRounds:DataTypes.INTEGER,
     MaxContestants: {
       type: DataTypes.INTEGER,
       allowNull: true
@@ -42,7 +43,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     Rules:{
-      type:DataTypes.STRING,
+      type:DataTypes.TEXT,
       allowNull:true
     }
   }, {
