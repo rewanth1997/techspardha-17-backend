@@ -11,9 +11,9 @@ module.exports = function(sequelize, DataTypes) {
       associate:function(models) {
         Interests.belongsTo(models.Category);
         Interests.belongsTo(models.Students);
-      }
 
     }
+  }
   });
   return Interests;
 };

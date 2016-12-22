@@ -63,6 +63,7 @@ module.exports = function(sequelize, DataTypes) {
               unique: false
             }
           });
+
       }
     },
     indexes: [
