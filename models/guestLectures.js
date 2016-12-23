@@ -26,6 +26,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
+    Designation: DataTypes.STRING,
     Venue: {
     	type: DataTypes.STRING,
     	allowNull: true
