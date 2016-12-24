@@ -17,3 +17,8 @@ Backend part for the official Techno-Managerial Fest of National Institute of Te
 - Copy `config/configStructure.json` to `config/config.json` and fill the configuration details
 - `npm start`
 - And to stop, run `npm run stop`
+
+
+Deployment instructions:
+
+Increment all guest lecture's ID by 1000
