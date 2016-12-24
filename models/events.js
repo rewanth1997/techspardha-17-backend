@@ -29,6 +29,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: true
     },
+    Image: DataTypes.STRING,
     TotalRounds:DataTypes.INTEGER,
     MaxContestants: {
       type: DataTypes.INTEGER,
