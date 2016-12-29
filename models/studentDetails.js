@@ -40,7 +40,12 @@ module.exports = function(sequelize, DataTypes) {
         });
       }
 
-    }
+    },
+    indexes: [
+      {
+        type: 'FULLTEXT',name: 'search_user_phone_ft', fields: ['PhoneNumber']
+      }
+    ]
   });
   return StudentDetails;
 };

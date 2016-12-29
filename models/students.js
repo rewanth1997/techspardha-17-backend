@@ -24,7 +24,12 @@ module.exports = function(sequelize, DataTypes) {
         Students.hasMany(models.TeamInvites);
         Students.hasMany(models.WishList);
       }
-   }
+    },
+    indexes: [
+      {
+        type: 'FULLTEXT',name: 'search_user_name_ft', fields: ['Name']
+      }
+    ]
   });
   return Students;
 };

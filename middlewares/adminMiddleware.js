@@ -15,7 +15,7 @@ module.exports = function(req, res, next) {
       Email: req.user.email
     }
   }).then(function(data) {
-    if(data.length === 1) {
+    if(data.length) {
       next();
     }
     else {
