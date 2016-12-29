@@ -8,9 +8,13 @@ module.exports = function(sequelize, DataTypes) {
     Message: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    NotificationType: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   }, {
-    timestamps:false,
+    timestamps:true,
     classMethods: {
       associate:function(models) {
         Notifications.belongsTo(models.Events);
