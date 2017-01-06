@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
 			autoIncrement: true
 		},
     Status: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.STRING,
       allowNull: false
     }
   }, {
