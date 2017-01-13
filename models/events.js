@@ -46,6 +46,10 @@ module.exports = function(sequelize, DataTypes) {
     Rules:{
       type:DataTypes.TEXT,
       allowNull:true
+    },
+    Result: {
+      type: DataTypes.TEXT,
+      allowNull: true,
     }
   }, {
   timestamps: false,
